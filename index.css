@@ -1,0 +1,405 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color-scheme: dark;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #120a06;
+  color: #f5f5f4;
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Monospace elements with clear readable figures */
+code, kbd, samp, pre, .font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+/* Ensure inputs, textareas and selects are 100% visible, high-contrast and never dark-on-dark */
+input, textarea, select {
+  color: #ffffff !important;
+  background-color: #221309;
+  border-color: #5a3821;
+  caret-color: #fbbf24 !important;
+  font-weight: 600;
+  scroll-margin-bottom: 90px;
+  scroll-margin-top: 80px;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #a8a29e !important;
+  opacity: 0.95 !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  color: #ffffff !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.4) !important;
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+@keyframes startBannerPop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  35% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes startBannerFade {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-start-banner {
+  animation: startBannerPop 1.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-start-banner-fade {
+  animation: startBannerFade 1.7s ease-in-out forwards;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shrinkWidth {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-shrink-width {
+  animation: shrinkWidth linear forwards;
+}
+
+@keyframes pulseScale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-scale {
+  animation: pulseScale 1.6s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes stoneDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-24px) scale(1.4);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(2px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes stoneLift {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(1.3);
+  }
+}
+
+@keyframes capturePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 25px 8px rgba(244, 63, 94, 0.85);
+    transform: scale(1.04);
+  }
+}
+
+@keyframes floatStoneBadge {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.15);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-16px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-26px) scale(0.9);
+  }
+}
+
+.animate-stone-drop {
+  animation: stoneDrop 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-stone-lift {
+  animation: stoneLift 0.35s ease-out forwards;
+}
+
+.animate-capture-pulse {
+  animation: capturePulse 0.8s ease-in-out infinite;
+}
+
+.animate-float-stone {
+  animation: floatStoneBadge 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ──────────────────────────────────────────────────────────
+   ANIMAÇÃO DE TREPIDAÇÃO E IMPACTO VISUAL NO TABULEIRO DE NTXUVA
+   ────────────────────────────────────────────────────────── */
+@keyframes boardCaptureTremor {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  10% {
+    transform: translate(-4px, -3px) scale(1.018) rotate(-0.3deg);
+  }
+  22% {
+    transform: translate(4px, 2.5px) scale(1.022) rotate(0.35deg);
+  }
+  34% {
+    transform: translate(-4.5px, 2px) scale(1.02) rotate(-0.25deg);
+  }
+  46% {
+    transform: translate(3.5px, -2.5px) scale(1.014) rotate(0.2deg);
+  }
+  58% {
+    transform: translate(-2.5px, 2px) scale(1.01) rotate(-0.1deg);
+  }
+  72% {
+    transform: translate(2px, -1.5px) scale(1.005) rotate(0.08deg);
+  }
+  86% {
+    transform: translate(-1px, 1px) scale(1.002) rotate(-0.04deg);
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes boardCaptureGlow {
+  0% {
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.75), inset 0 2px 4px rgba(255,255,255,0.35), inset 0 -3px 6px rgba(60,25,5,0.45), 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+  20% {
+    box-shadow: 0 25px 50px -5px rgba(0, 0, 0, 0.9), inset 0 2px 6px rgba(255,255,255,0.7), inset 0 -3px 8px rgba(60,25,5,0.65), 0 0 38px 10px rgba(244, 63, 94, 0.85), 0 0 65px 18px rgba(239, 68, 68, 0.5);
+  }
+  60% {
+    box-shadow: 0 22px 48px -8px rgba(0, 0, 0, 0.8), inset 0 2px 5px rgba(255,255,255,0.45), inset 0 -3px 7px rgba(60,25,5,0.5), 0 0 24px 5px rgba(244, 63, 94, 0.55), 0 0 42px 10px rgba(239, 68, 68, 0.3);
+  }
+  100% {
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.75), inset 0 2px 4px rgba(255,255,255,0.35), inset 0 -3px 6px rgba(60,25,5,0.45), 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes boardCaptureShockwave {
+  0% {
+    opacity: 0.95;
+    transform: scale(0.97);
+  }
+  40% {
+    opacity: 0.75;
+    transform: scale(1.025);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}
+
+.animate-board-tremor {
+  animation: boardCaptureTremor 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both, boardCaptureGlow 0.65s ease-out both;
+  will-change: transform, box-shadow;
+}
+
+.animate-board-shockwave {
+  animation: boardCaptureShockwave 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────────────────
+   ANIMAÇÕES DO ECRÃ DE VITÓRIA (TAÇA, BALÕES E CELEBRAÇÃO)
+   ────────────────────────────────────────────────────────── */
+@keyframes trophyReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(60px);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.08) translateY(-6px);
+  }
+  85% {
+    transform: scale(0.97) translateY(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.05);
+  }
+}
+
+@keyframes floatBalloon1 {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.95;
+  }
+  50% {
+    transform: translateY(-55vh) translateX(18px) rotate(8deg);
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(-12px) rotate(-6deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatBalloon2 {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  50% {
+    transform: translateY(-55vh) translateX(-22px) rotate(-10deg);
+  }
+  90% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(15px) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatBalloon3 {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(25px) rotate(12deg);
+  }
+  88% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(-18px) rotate(-8deg);
+    opacity: 0;
+  }
+}
+
+.animate-trophy-reveal {
+  animation: trophyReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-bounce-gentle {
+  animation: bounceGentle 2.6s ease-in-out infinite;
+}
+
+.animate-float-balloon-1 {
+  animation: floatBalloon1 linear infinite;
+}
+
+.animate-float-balloon-2 {
+  animation: floatBalloon2 linear infinite;
+}
+
+.animate-float-balloon-3 {
+  animation: floatBalloon3 linear infinite;
+}
+

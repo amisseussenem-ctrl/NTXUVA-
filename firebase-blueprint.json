@@ -1,0 +1,74 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Perfil de jogador de Ntxuva na comunidade global",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "nome": { "type": "string", "maxLength": 64 },
+        "avatar": { "type": "string", "maxLength": 512 },
+        "pais": { "type": "string", "maxLength": 64 },
+        "bio": { "type": "string", "maxLength": 256 },
+        "vitorias": { "type": "number" },
+        "derrotas": { "type": "number" },
+        "partidas": { "type": "number" },
+        "online": { "type": "boolean" },
+        "ultimaAtividade": { "type": "number" }
+      },
+      "required": ["id", "nome", "avatar"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Mensagem ou publicação em tempo real no chat global da comunidade Ntxuva",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "autorId": { "type": "string", "maxLength": 128 },
+        "autorNome": { "type": "string", "maxLength": 64 },
+        "autorAvatar": { "type": "string", "maxLength": 512 },
+        "autorPais": { "type": "string", "maxLength": 64 },
+        "texto": { "type": "string", "maxLength": 1024 },
+        "tipo": { "type": "string", "enum": ["texto", "convite_jogo", "campeonato"] },
+        "codigoSala": { "type": "string", "maxLength": 32 },
+        "tempoTurno": { "type": "number" },
+        "campeonatoId": { "type": "string", "maxLength": 128 },
+        "campeonatoTitulo": { "type": "string", "maxLength": 128 },
+        "criadoEm": { "type": "number" }
+      },
+      "required": ["id", "autorId", "autorNome", "texto", "tipo", "criadoEm"]
+    },
+    "Campeonato": {
+      "title": "Campeonato",
+      "description": "Torneio ou campeonato de Ntxuva criado pela comunidade",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "titulo": { "type": "string", "maxLength": 128 },
+        "descricao": { "type": "string", "maxLength": 1024 },
+        "organizadorId": { "type": "string", "maxLength": 128 },
+        "organizadorNome": { "type": "string", "maxLength": 64 },
+        "organizadorAvatar": { "type": "string", "maxLength": 512 },
+        "maxParticipantes": { "type": "number" },
+        "status": { "type": "string", "enum": ["aberto", "em_andamento", "finalizado"] },
+        "vencedorNome": { "type": "string", "maxLength": 64 },
+        "criadoEm": { "type": "number" }
+      },
+      "required": ["id", "titulo", "organizadorId", "organizadorNome", "maxParticipantes", "status", "criadoEm"]
+    }
+  },
+  "firestore": {
+    "/perfis_jogadores/{perfilId}": {
+      "schema": "UserProfile",
+      "description": "Perfis públicos e estatísticas dos jogadores de Ntxuva"
+    },
+    "/chat_mensagens/{mensagemId}": {
+      "schema": "ChatMessage",
+      "description": "Mensagens em tempo real, links de salas online e anúncios de campeonatos"
+    },
+    "/campeonatos/{campeonatoId}": {
+      "schema": "Campeonato",
+      "description": "Campeonatos criados por jogadores com gestão de vagas e chaves"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d1d0e" />
+      <stop offset="50%" stop-color="#241007" />
+      <stop offset="100%" stop-color="#140803" />
+    </linearGradient>
+    <radialGradient id="pitGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0d0502" />
+      <stop offset="85%" stop-color="#1b0b05" />
+      <stop offset="100%" stop-color="#4a2614" />
+    </radialGradient>
+    <radialGradient id="stoneGradGold" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="40%" stop-color="#eab308" />
+      <stop offset="100%" stop-color="#713f12" />
+    </radialGradient>
+    <radialGradient id="stoneGradStone" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#f5f5f4" />
+      <stop offset="50%" stop-color="#a8a29e" />
+      <stop offset="100%" stop-color="#44403c" />
+    </radialGradient>
+    <filter id="woodShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <!-- Base do Tabuleiro de Madeira entalhada -->
+  <rect x="24" y="24" width="464" height="464" rx="96" fill="url(#boardGrad)" stroke="#78350f" stroke-width="6" filter="url(#woodShadow)" />
+  
+  <!-- Borda interna esculpida -->
+  <rect x="42" y="42" width="428" height="428" rx="80" fill="none" stroke="#d97706" stroke-width="2" stroke-opacity="0.35" stroke-dasharray="8 6" />
+
+  <!-- Miniatura da Grelha de Covas do Ntxuva (4 fileiras de covas esculpidas) -->
+  <!-- Linha 1 -->
+  <ellipse cx="140" cy="115" rx="36" ry="24" fill="url(#pitGrad)" stroke="#5c2e14" stroke-width="2" />
+  <ellipse cx="220" cy="115" rx="36" ry="24" fill="url(#pitGrad)" stroke="#5c2e14" stroke-width="2" />
+  <ellipse cx="300" cy="115" rx="36" ry="24" fill="url(#pitGrad)" stroke="#5c2e14" stroke-width="2" />
+  <ellipse cx="380" cy="115" rx="36" ry="24" fill="url(#pitGrad)" stroke="#5c2e14" stroke-width="2" />
+
+  <!-- Pedrinhas na Linha 1 -->
+  <circle cx="132" cy="112" r="9" fill="url(#stoneGradStone)" />
+  <circle cx="148" cy="116" r="9" fill="url(#stoneGradStone)" />
+  <circle cx="212" cy="114" r="9" fill="url(#stoneGradStone)" />
+  <circle cx="228" cy="113" r="9" fill="url(#stoneGradStone)" />
+  <circle cx="295" cy="115" r="9" fill="url(#stoneGradStone)" />
+  <circle cx="375" cy="112" r="9" fill="url(#stoneGradStone)" />
+  <circle cx="388" cy="117" r="9" fill="url(#stoneGradStone)" />
+
+  <!-- Linha 2 (Ataque B) -->
+  <ellipse cx="140" cy="180" rx="36" ry="24" fill="url(#pitGrad)" stroke="#78350f" stroke-width="2" />
+  <ellipse cx="220" cy="180" rx="36" ry="24" fill="url(#pitGrad)" stroke="#78350f" stroke-width="2" />
+  <ellipse cx="300" cy="180" rx="36" ry="24" fill="url(#pitGrad)" stroke="#78350f" stroke-width="2" />
+  <ellipse cx="380" cy="180" rx="36" ry="24" fill="url(#pitGrad)" stroke="#78350f" stroke-width="2" />
+
+  <!-- Pedrinhas na Linha 2 -->
+  <circle cx="214" cy="178" r="9" fill="url(#stoneGradGold)" />
+  <circle cx="228" cy="182" r="8" fill="url(#stoneGradStone)" />
+  <circle cx="300" cy="180" r="10" fill="url(#stoneGradGold)" />
+
+  <!-- Divisória central tradicional (fronteira entre territórios) -->
+  <line x1="80" y1="230" x2="432" y2="230" stroke="#f59e0b" stroke-width="3" stroke-opacity="0.4" stroke-dasharray="12 8" />
+
+  <!-- Linha 3 (Ataque A) -->
+  <ellipse cx="140" cy="280" rx="36" ry="24" fill="url(#pitGrad)" stroke="#78350f" stroke-width="2" />
+  <ellipse cx="220" cy="280" rx="36" ry="24" fill="url(#pitGrad)" stroke="#78350f" stroke-width="2" />
+  <ellipse cx="300" cy="280" rx="36" ry="24" fill="url(#pitGrad)" stroke="#78350f" stroke-width="2" />
+  <ellipse cx="380" cy="280" rx="36" ry="24" fill="url(#pitGrad)" stroke="#78350f" stroke-width="2" />
+
+  <!-- Pedrinhas na Linha 3 -->
+  <circle cx="135" cy="278" r="9" fill="url(#stoneGradGold)" />
+  <circle cx="148" cy="282" r="9" fill="url(#stoneGradStone)" />
+  <circle cx="295" cy="277" r="9" fill="url(#stoneGradGold)" />
+  <circle cx="375" cy="280" r="9" fill="url(#stoneGradStone)" />
+  <circle cx="387" cy="279" r="8" fill="url(#stoneGradGold)" />
+
+  <!-- Título Tipográfico NTXUVA -->
+  <text x="256" y="385" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', Roboto, sans-serif" font-size="58" font-weight="900" fill="#fbbf24" letter-spacing="4">NTXUVA</text>
+
+  <!-- Subtítulo Cultural Moçambique -->
+  <text x="256" y="425" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', Roboto, sans-serif" font-size="20" font-weight="800" fill="#fed7aa" letter-spacing="8">MOÇAMBIQUE</text>
+  
+  <!-- Detalhe decorativo com cores de Moçambique -->
+  <rect x="180" y="445" width="48" height="4" rx="2" fill="#009639" />
+  <rect x="232" y="445" width="48" height="4" rx="2" fill="#ffcb05" />
+  <rect x="284" y="445" width="48" height="4" rx="2" fill="#d81e05" />
+</svg>

@@ -1,0 +1,8 @@
+{
+  "name": "NTXUVA",
+  "description": "Jogo tradicional NTXUVA para 2 jogadores com 24 casas e 48 pedras na geometria 4x6. Regras estritas de Vitória (captura das últimas pedras do adversário) e Empate (somente por acordo mútuo).",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

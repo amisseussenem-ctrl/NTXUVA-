@@ -1,0 +1,60 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Connection probe test
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+
+    // Perfis dos Jogadores de Ntxuva
+    match /perfis_jogadores/{perfilId} {
+      allow read: if true;
+      allow create: if true;
+      allow update: if true;
+      allow delete: if false;
+    }
+
+    // Chat Global em Tempo Real (Mensagens, convites e anúncios)
+    match /chat_mensagens/{mensagemId} {
+      allow read: if true;
+      allow create: if true;
+      allow update: if true;
+      allow delete: if true;
+    }
+
+    // Campeonatos e Torneios da Comunidade
+    match /campeonatos/{campeonatoId} {
+      allow read: if true;
+      allow create: if true;
+      allow update: if true;
+      allow delete: if true;
+    }
+
+    // Regras de fallback para dados legados
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    match /stores/{storeId} {
+      allow read, write: if true;
+    }
+
+    match /products/{productId} {
+      allow read, write: if true;
+    }
+
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+
+    match /stats/{statsId} {
+      allow read, write: if true;
+    }
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
